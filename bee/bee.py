@@ -22,8 +22,6 @@ def solve(wordset, letterset, centerLetter):
             outputSet.add(potentialWord)
     sortedWordList = list(outputSet)
     sortedWordList.sort()
-    #pp = pprint.PrettyPrinter(width=60)
-    #pp.pprint(sortedWordList)
     print ("\n".join(map(str, sortedWordList)))
 
 print("NYT Spelling Bee Solver")
@@ -42,9 +40,5 @@ for letter in range (1,7):
         #print "validLetters", validLetters
         #print "index: ", letter
         validLetters.add(letters[letter])
-#validLetters.add(sys.argv[2:7])
-#validLetters.update(sys.argv[2:7])
-
-print "Your set of letters is: ", validLetters
 
 solve(actual_words, validLetters, centerLetter)
