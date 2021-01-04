@@ -1,10 +1,10 @@
- NYT spelling bee puzzle solver
+# NYT spelling bee puzzle solver
 
 import pprint
-import sys
+import sys 
 
 with open("word_list.txt") as wordlist_file:
-    # ingest the word list as a set
+    # ingest the word list as a set 
     actual_words = set(word.strip().lower() for word in wordlist_file)
 
 def solve(wordset, letterset, centerLetter):
@@ -26,19 +26,15 @@ def solve(wordset, letterset, centerLetter):
 
 print("NYT Spelling Bee Solver")
 
-#centerLetter = 'a'
-#validLetters =  set(['a', 'c', 'b', 'd', 'k', 'r', 'w'])
-
 centerLetter = ''
 validLetters = set()
 letters = sys.argv[1:8]
-print "Letters for today: ", letters
 centerLetter = letters[0]
 print "Center Letter is: ", centerLetter
 validLetters.add(centerLetter)
 for letter in range (1,7):
-        #print "validLetters", validLetters
-        #print "index: ", letter
         validLetters.add(letters[letter])
+
+print "validLetters", validLetters
 
 solve(actual_words, validLetters, centerLetter)
