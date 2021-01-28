@@ -45,6 +45,6 @@ func main() {
         
         for i := 1; i <= *numRolls; i++ {
                 diceroll := rollDice() 
-                fmt.Println("Die ", i, ": ", diceroll)
+                fmt.Printf("Die %3d: %2d\n", i, diceroll)
         }
 }
