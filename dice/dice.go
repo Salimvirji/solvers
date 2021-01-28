@@ -30,7 +30,6 @@ func main() {
         printDistribution := flag.Bool("dist", false, "print distribution table")
         flag.Parse()
 
-        // prepare the dice
         switch *numSides {
                 case 4:
                         dice = []int{1, 2, 3, 4}
@@ -41,6 +40,8 @@ func main() {
                 case 12: 
                         dice = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12} 
                 default:
+                        //TODO(salim): assign a default value to numSides
+                        fmt.Printf("%2d not valid, using default\n\n", *numSides)
                         dice = []int{1, 2, 3, 4, 5, 6}
         }   
 
@@ -54,7 +55,7 @@ func main() {
         }   
 
         if (*printDistribution ) { 
-                print 
+        fmt.Println("\n+++Distribution+++\n")
                 for i :=1; i <= *numSides; i++ {
                         fmt.Printf("%2d: %3d rolls\n", i, dist[i])
                 }   
