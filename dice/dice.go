@@ -25,39 +25,42 @@ func rollDice() int {
 }
 
 func main() {
-        numRolls := flag.Int("rolls", 5, "number of times to roll")
-        numSides := flag.Int("sides", 6, "number of sides on each die")
-        printDistribution := flag.Bool("dist", false, "print distribution table")
-        flag.Parse()
+	numRolls := flag.Int("rolls", 5, "number of times to roll")
+	numSides := flag.Int("sides", 6, "number of sides on each die")
+	printDistribution := flag.Bool("dist", false, "print distribution table")
+	printRolls := flag.Bool("show", true, "print each roll")
+ 	flag.Parse()
 
-        switch *numSides {
-                case 4:
-                        dice = []int{1, 2, 3, 4}
-                case 6:
-                        dice = []int{1, 2, 3, 4, 5, 6}
-                case 10: 
-                        dice = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10} 
-                case 12: 
-                        dice = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12} 
-                default:
-                        //TODO(salim): assign a default value to numSides
-                        fmt.Printf("%2d not valid, using default\n\n", *numSides)
-                        dice = []int{1, 2, 3, 4, 5, 6}
-        }   
+	switch *numSides {
+		case 4:
+			dice = []int{1, 2, 3, 4}
+		case 6:
+			dice = []int{1, 2, 3, 4, 5, 6}
+		case 10:
+			dice = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+		case 12:
+			dice = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
+		default:
+			//TODO(salim): assign a default value to numSides
+			fmt.Printf("%2d not valid, using default\n\n", *numSides)
+			dice = []int{1, 2, 3, 4, 5, 6}
+	}
 
-        // keep a table of results
-        var dist = make([]int, *numSides+1) 
+	// keep a table of results
+	var dist = make([]int, *numSides+1) 
 
-        for i := 1; i <= *numRolls; i++ {
-                diceroll := rollDice()
-                fmt.Printf("Die %3d: %2d\n", i, diceroll)
-                dist[diceroll]++
-        }   
+	for i := 1; i <= *numRolls; i++ {
+		diceroll := rollDice()
+		if (*printRolls) {
+			fmt.Printf("Die %3d: %2d\n", i, diceroll)
+		}
+		dist[diceroll]++
+	}
 
-        if (*printDistribution ) { 
-        fmt.Println("\n+++Distribution+++\n")
-                for i :=1; i <= *numSides; i++ {
-                        fmt.Printf("%2d: %3d rolls\n", i, dist[i])
-                }   
-        }   
+	if (*printDistribution ) {
+	fmt.Println("\n+++Distribution+++\n")
+		for i :=1; i <= *numSides; i++ {
+			fmt.Printf("%2d: %3d rolls\n", i, dist[i])
+		}
+	}
 }
