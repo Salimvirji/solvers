@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	strSantas := [...]string{"person1, "person2, "personN"}
+	strSantas := [...]string{"person1, "person2", "personN"}
 	var k int
 	fmt.Println(len(strSantas))
 	l := len(strSantas) - 1
